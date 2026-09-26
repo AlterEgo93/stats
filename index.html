@@ -9,13 +9,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<meta property="og:title" content="Alter Ego" />
-<meta property="og:description" content="Інфографіка за місяць" />
-<meta property="og:image" content="https://AlterEgo93.github.io/month/og-image.jpg" />
-<meta property="og:image:width" content="1536" />
-<meta property="og:image:height" content="864" />
-<meta name="twitter:card" content="summary_large_image" />
-
 <style>
     :root {
         color-scheme: light;
@@ -52,15 +45,11 @@
         transform-origin: top left;
     }
 
-    .text, .unit {
+    .text {
         position: absolute;
         color: #010101; 
         text-align: center;
         line-height: 1.05;
-    }
-
-    .unit {
-        text-align:left;
     }
 
     /* АБСОЛЮТНА БРОНЯ ВІД ТЕМНОГО РЕЖИМУ ОПЕРИ */
@@ -68,11 +57,10 @@
     body:not(.exporting) .big-number, 
     body:not(.exporting) .big-label, 
     body:not(.exporting) .small-label, 
-    body:not(.exporting) .section-title, 
+    body:not(.exporting) .center-title, 
     body:not(.exporting) .mini-number, 
     body:not(.exporting) .mini-label, 
-    body:not(.exporting) .mini-desc, 
-    body:not(.exporting) .unit-stats span {
+    body:not(.exporting) .mini-desc {
         color: transparent !important;
         -webkit-text-fill-color: transparent !important;
         text-shadow: none !important;
@@ -83,7 +71,6 @@
 
     /* ЗАГОЛОВОК */
     .title{ font-size: 40px; font-weight:800; width:81.38%; left:3.58%; top:3.70%; text-align:left; }
-
     .years{ color: #3d73ab !important; -webkit-text-fill-color: #3d73ab !important;}
 
     /* ГОЛОВНІ БЛОКИ */
@@ -91,105 +78,83 @@
     .big-label{ font-size: 28px; font-weight:700; }
     .small-label{ font-size: 14px; font-weight:500; line-height:1.25; }
 
-    .missions{ 
-        left: 20.90%; 
-        top: 33.56%; 
-        width: 18.22%; 
-        transform: translateX(-50%); 
-    }
+    .missions{ left: 20.90%; top: 33.56%; width: 18.22%; transform: translateX(-50%); }
+    .distance{ left: 50.50%; top: 33.56%; width: 19.53%; transform: translateX(-50%); }
+    .cargo{ left: 79.67%; top: 33.56%; width: 21%; transform: translateX(-50%); }
 
-    .distance{ 
-        left: 50.50%; 
-        top: 33.56%; 
-        width: 19.53%; 
-        transform: translateX(-50%); 
-    }
-
-    .cargo{ 
-        left: 79.67%; 
-        top: 33.56%; 
-        width: 21%; 
-        transform: translateX(-50%); 
+    /* ЗАГОЛОВОК НИЖНЬОЇ СЕКЦІЇ З ЛІНІЯМИ */
+    .center-title {
+        top: 64%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        font-weight: 800;
+        text-align: center;
+        width: 92%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
     }
     
-    /* НИЖНІ ЗАГОЛОВКИ */
-    .section-title{ font-size: 28px; font-weight:800; text-align:left; }
-    .left-section{ left:3.58%; top:64.81%; }
-    .right-section{ left:48.17%; top:64.81%; }
+    .center-title::before, .center-title::after {
+        content: "";
+        flex: 1;
+        height: 2px;
+        background-color: #d0d0d0; /* Колір сірих ліній */
+    }
 
-    /* FLEX */
-    .flex{ display:flex; align-items:center; }
+    /* НИЖНІЙ БЛОК (6 колонок в один ряд) */
+    .bottom-stats {
+        position: absolute;
+        top: 71%;
+        left: 2%;
+        width: 96%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 5px;
+    }
 
-    /* ЕВАКУАЦІЯ */
-    .evac1{ left:11.72%; top:70.60%; width:19.53%; text-align:left; }
-    .evac2{ left:11.72%; top:83.91%; width:19.53%; text-align:left; }
-    
-    /* БЛОК ОПЕРАЦІЙ ТА МІСІЙ */
-    .ops{ 
-        left:33.85%; 
-        top:70.60%; 
-        width:18%; 
-        text-align:left; 
+    .stat-item {
+        flex: 1;
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        padding-left: 65px; /* Місце під іконку з background.png */
+        position: relative;
     }
 
-    .mini-number{ font-size: 58px; font-weight:800; margin-right:4%; }
-    .mini-label{ font-size: 20px; font-weight:700; }
-
-    /* ПІДРОЗДІЛИ */
-    .unit { width: 16.27%; height: 22%; }
-
-    .unit-title {
-        position: absolute; 
-        top: 0; left: 0;
-        font-size: 22px; 
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        display: inline-block;
-        background: #2d5d93;
-        color: #ffffff !important;
-        -webkit-text-fill-color: #ffffff !important;
-        padding: 0.45em 0.65em;
-        border-radius: 0.7em;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        line-height: 1.05;
-        z-index: 2;
+    .stat-top {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
     }
 
-    .unit-stats {
-        position: absolute; 
-        top: 60%; left: 0;
-        margin-left: -33%;
-        font-size: 18px; 
+    .mini-number { 
+        font-size: 46px; 
+        font-weight: 800; 
+        line-height: 1;
+    }
+    
+    .mini-label { 
+        font-size: 14px; 
+        font-weight: 700; 
+        line-height: 1.15;
+    }
+
+    .mini-desc {
+        font-size: 11px;
         font-weight: 600;
-        line-height: 1.45;
-        width: 140%;
+        line-height: 1.3;
+        color: #010101;
     }
 
-    .unit-stats .flex { line-height: 1; margin-bottom: 0.4em; }
-
-    .progress {
-        margin-left: 0.4em;
-        width: 47%; height: 0.7em; 
-        background: #d9e4ef;
-        border-radius: 999px;
-        overflow: hidden;
-        flex-shrink: 0;
+    .mini-desc div {
+        margin-bottom: 4px;
     }
-        
-    .fill{
-        height:100%;
-        background:linear-gradient(90deg, #1f4f82 0%, #3d73ab 100%);
-        border-radius:999px; width:0%; transition:0.5s;
-    }
-
-    /* ПОЗИЦІЇ РОТ */
-    .unit1{ left:52.73%; top:70.60%; }
-    .unit2{ left:69.7%; top:70.60%; }
-    .unit3{ left:86.7%; top:70.60%; }
-
-    .unit2 .unit-title { top: 0; left: -5%; }
 
     /* КНОПКА ЗБЕРЕЖЕННЯ */
     #saveBtn{
@@ -235,7 +200,7 @@
         <div class="text missions">
             <div class="big-number" id="total-missions"></div>
             <div class="big-label">бойових місій</div>
-            <div class="small-label">Загальна кількість виїздів<br>усіх підрозділів за місяць</div>
+            <div class="small-label">Загальна кількість виїздів<br>усіх підрозділів за період</div>
         </div>
 
         <div class="text distance">
@@ -250,57 +215,61 @@
             <div class="small-label">Понад <span id="weight-tons"></span> боєприпасів,<br>провізії та іншого майна</div>
         </div>
 
-        <div class="text section-title left-section"></div>
-        <div class="text section-title right-section"></div>
+        <!-- Центральний заголовок нижньої секції -->
+        <div class="text center-title">Евакуація та спеціальні операції</div>
 
-        <div class="text evac1" id="evac-people-wrapper">
-            <div class="flex">
-                <span class="mini-number" id="evac-people"></span>
-                <span class="mini-label">евакуацій<br>особового складу</span>
+        <!-- Контейнер для нижніх 6 блоків -->
+        <div class="bottom-stats">
+            <div class="stat-item" id="evac-people-wrapper">
+                <div class="stat-top">
+                    <span class="mini-number" id="evac-people"></span>
+                    <span class="mini-label">евакуацій<br>особового<br>складу</span>
+                </div>
+                <div class="mini-desc">
+                    <div id="evac-300-wrapper"><span style="color:#2b5e91; font-size:14px; margin-right:4px;">🧑‍🦽</span><span id="evac-300"></span> поранених (300)</div>
+                    <div id="evac-200-wrapper"><span style="color:#2b5e91; font-size:14px; margin-right:4px;">⏳</span><span id="evac-200"></span> загиблих (200)</div>
+                </div>
             </div>
-            <div class="mini-desc">
-                <div id="evac-300-wrapper"><b><span id="evac-300"></span></b> поранених (300-ті)</div>
-                <div id="evac-200-wrapper"><b><span id="evac-200"></span></b> загиблих (200-ті)</div>
+
+            <div class="stat-item" id="evac-nrk-wrapper">
+                <div class="stat-top">
+                    <span class="mini-number" id="evac-nrk"></span>
+                    <span class="mini-label">евакуацій<br>НРК</span>
+                </div>
+                <div class="mini-desc">Кількість операцій з порятунку<br>та вивезення пошкоджених<br>наземних комплексів</div>
+            </div>
+
+            <div class="stat-item" id="strike-wrapper">
+                <div class="stat-top">
+                    <span class="mini-number" id="strike-ops"></span>
+                    <span class="mini-label">ударних<br>місій</span>
+                </div>
+            </div>
+
+            <div class="stat-item" id="engineer-wrapper">
+                <div class="stat-top">
+                    <span class="mini-number" id="engineer-ops"></span>
+                    <span class="mini-label">інженерних<br>місій</span>
+                </div>
+                <div class="mini-desc">Окрім логістики, підрозділ<br>виконав спеціалізовані<br>інженерні завдання</div>
+            </div>
+
+            <div class="stat-item" id="recon-wrapper">
+                <div class="stat-top">
+                    <span class="mini-number" id="recon-ops"></span>
+                    <span class="mini-label">розвідувальних<br>місій</span>
+                </div>
+                <div class="mini-desc">Кількість польотів та<br>наземних виїздів з метою<br>збору розвідданих</div>
+            </div>
+
+            <div class="stat-item" id="destroyed-wrapper">
+                <div class="stat-top">
+                    <span class="mini-number" id="destroyed-ops"></span>
+                    <span class="mini-label">контр-БПЛА<br>завдань</span>
+                </div>
+                <div class="mini-desc">Виявлення та нейтралізація<br>ворожих безпілотних<br>апаратів</div>
             </div>
         </div>
-
-        <div class="text evac2" id="evac-nrk-wrapper">
-            <div class="flex">
-                <span class="mini-number" id="evac-nrk"></span>
-                <span class="mini-label">евакуацій<br>НРК</span>
-            </div>
-            <div class="mini-desc">Кількість операцій з порятунку<br>та вивезення пошкоджених комплексів</div>
-        </div>
-
-        <div class="text ops">
-            <div class="flex" id="strike-wrapper" style="margin-bottom: 8px; order: 1;">
-                <span class="mini-number" id="strike-ops"></span>
-                <span class="mini-label">ударна<br>місія</span>
-            </div>
-            
-            <div class="flex" id="engineer-wrapper" style="margin-bottom: 8px; order: 2;">
-                <span class="mini-number" id="engineer-ops"></span>
-                <span class="mini-label">інженерна<br>операція</span>
-            </div>
-
-            <div class="mini-desc">Окрім логістики, підрозділ виконує спеціалізовані інженерні завдання</div>
-
-            
-            <div class="flex" id="recon-wrapper" style="order: 3; margin-top: 6px;">
-                <span class="mini-number" id="recon-ops"></span>
-                <span class="mini-label">розвід<br>місія</span>
-            </div>
-            <div class="mini-desc">Кількість місій НРК-розвідників з метою збору розвідданих</div>
-
-            <div class="flex" id="destroyed-wrapper" style="margin-bottom: 8px; order: 4;">
-                <span class="mini-number" id="destroyed-ops"></span>
-                <span class="mini-label">збиті БПЛА противника</span>
-            </div>
-            <div class="mini-desc">Вивлення та знищення ворожих безпілотних апаратів</div>
-
-            
-        </div>
-
         
     </div>
     
@@ -313,12 +282,8 @@
     function formatNumber(num){ return new Intl.NumberFormat('uk-UA').format(num || 0).replace(/,/g, ' '); }
 
     function getReportMonth(){
-        const months = ['січень', 'лютий', 'березень', 'квітень', 'травень', 'червень', 'липень', 'серпень', 'вересень', 'жовтень', 'листопад', 'грудень'];
-        const now = new Date();
-        let month = now.getMonth();
-        let year = now.getFullYear();
-        if(now.getDate() <= 5){ month--; if(month < 0){ month = 11; year--; } }
-        return `2025–${year}`;
+        // Фіксуємо значення з макету (2025-2026) або лишаємо динамічний розрахунок
+        return `2025–2026`;
     }
 
     function formatTons(kg){
@@ -339,7 +304,7 @@
         if (!data.evac_people || data.evac_people === 0) {
             evacPeopleWrapper.style.display = 'none';
         } else {
-            evacPeopleWrapper.style.display = 'block';
+            evacPeopleWrapper.style.display = 'flex';
             document.getElementById('evac-people').textContent = formatNumber(data.evac_people);
 
             const evac300Wrapper = document.getElementById('evac-300-wrapper');
@@ -363,16 +328,12 @@
         if (!data.evac_nrk || data.evac_nrk === 0) {
             evacNrkWrapper.style.display = 'none';
         } else {
-            evacNrkWrapper.style.display = 'block';
+            evacNrkWrapper.style.display = 'flex';
             document.getElementById('evac-nrk').textContent = formatNumber(data.evac_nrk);
         }
 
         const strikeWrapper = document.getElementById('strike-wrapper');
-        
-        // Обов'язково записуємо число (навіть 0), щоб невидима цифра 
-        // розтягувала блок на правильну висоту шрифту 58px
         document.getElementById('strike-ops').textContent = formatNumber(data.strike_ops || 0);
-
         if (!data.strike_ops || data.strike_ops === 0) {
             strikeWrapper.style.visibility = 'hidden'; 
         } else {
@@ -380,18 +341,15 @@
         }
 
         const engineerWrapper = document.getElementById('engineer-wrapper');
-        const destroyedWrapper = document.getElementById('destroyed-wrapper');
-
         if (!data.engineer_ops || data.engineer_ops === 0) {
             engineerWrapper.style.display = 'none';
-            destroyedWrapper.style.order = '2'; 
         } else {
             engineerWrapper.style.display = 'flex';
             document.getElementById('engineer-ops').textContent = formatNumber(data.engineer_ops);
-            destroyedWrapper.style.order = '4'; 
         }
 
-        const destroyedVal = (data.destroyed_uav !== undefined && data.destroyed_uav !== null) ? data.destroyed_uav : 93;
+        const destroyedWrapper = document.getElementById('destroyed-wrapper');
+        const destroyedVal = (data.destroyed_uav !== undefined && data.destroyed_uav !== null) ? data.destroyed_uav : 332;
         if (!destroyedVal || destroyedVal === 0) {
             destroyedWrapper.style.display = 'none';
         } else {
@@ -400,42 +358,13 @@
         }
 
         const reconWrapper = document.getElementById('recon-wrapper');
-        const reconVal = (data.recon_ops !== undefined && data.recon_ops !== null) ? data.recon_ops : 12;
+        const reconVal = (data.recon_ops !== undefined && data.recon_ops !== null) ? data.recon_ops : 37;
         if (!reconVal || reconVal === 0) {
             reconWrapper.style.display = 'none';
         } else {
             reconWrapper.style.display = 'flex';
             document.getElementById('recon-ops').textContent = formatNumber(reconVal);
         }
-
-        const maxMissions = Math.max(data.stalker_missions || 0, data.black_missions || 0, data.bears_missions || 0);
-
-        function setBar(id, value){
-            const percent = maxMissions > 0 ? (value / maxMissions) * 100 : 0;
-            document.getElementById(id).style.width = percent + '%';
-        }
-
-        setBar('stalker-bar', data.stalker_missions);
-        setBar('black-bar', data.black_missions);
-        setBar('bears-bar', data.bears_missions);
-
-        document.getElementById('stalker-missions-text').textContent = 'Місії: ' + formatNumber(data.stalker_missions);
-        document.getElementById('stalker-distance').textContent = 'Відстань: ' + formatNumber(data.stalker_distance) + ' км';
-        document.getElementById('stalker-weight').textContent = 'Вага: ' + formatNumber(data.stalker_weight) + ' кг';
-        document.getElementById('stalker-evac_300').textContent = 'Евакуація (300/200): ' + formatNumber(data.stalker_evac_300) + ' / ' + formatNumber(data.stalker_evac_200);
-        document.getElementById('stalker-evac_nrk').textContent = 'Евакуація НРК: ' + formatNumber(data.stalker_evac_nrk);
-
-        document.getElementById('black-missions-text').textContent = 'Місії: ' + formatNumber(data.black_missions);
-        document.getElementById('black-distance').textContent = 'Відстань: ' + formatNumber(data.black_distance) + ' км';
-        document.getElementById('black-weight').textContent = 'Вага: ' + formatNumber(data.black_weight) + ' кг';
-        document.getElementById('black-evac_300').textContent = 'Евакуація (300/200): ' + formatNumber(data.black_evac_300) + ' / ' + formatNumber(data.black_evac_200);
-        document.getElementById('black-evac_nrk').textContent = 'Евакуація НРК: ' + formatNumber(data.black_evac_nrk);
-
-        document.getElementById('bears-missions-text').textContent = 'Місії: ' + formatNumber(data.bears_missions);
-        document.getElementById('bears-distance').textContent = 'Відстань: ' + formatNumber(data.bears_distance) + ' км';
-        document.getElementById('bears-weight').textContent = 'Вага: ' + formatNumber(data.bears_weight) + ' кг';
-        document.getElementById('bears-evac_300').textContent = 'Евакуація (300/200): ' + formatNumber(data.bears_evac_300) + ' / ' + formatNumber(data.bears_evac_200);
-        document.getElementById('bears-evac_nrk').textContent = 'Евакуація НРК: ' + formatNumber(data.bears_evac_nrk);
     }
 
     async function loadData(){
