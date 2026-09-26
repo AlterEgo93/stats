@@ -239,7 +239,7 @@
                 <span class="mini-number" id="evac-nrk"></span>
                 <span class="mini-label">евакуацій<br>НРК</span>
             </div>
-            <div class="mini-desc">Кількість операцій з порятунку<br>та вивезення пошкоджених<br>наземних комплексів</div>
+            <div class="mini-desc">Кількість операцій з порятунку та вивезення пошкоджених наземних комплексів</div>
         </div>
 
         <!-- БЛОК 3 -->
@@ -301,61 +301,61 @@
 
     function renderData(data) {
         document.getElementById('report-month').textContent = getReportMonth();
-        document.getElementById('total-missions').textContent = formatNumber(data.total_missions);
-        document.getElementById('total-distance').textContent = formatNumber(data.total_distance);
-        document.getElementById('total-weight').textContent = formatNumber(data.total_weight);
-        document.getElementById('weight-tons').textContent = formatTons(data.total_weight);
+        document.getElementById('total-missions').textContent = formatNumber(data.total_missions_stats);
+        document.getElementById('total-distance').textContent = formatNumber(data.total_distance_stats);
+        document.getElementById('total-weight').textContent = formatNumber(data.total_weight_stats);
+        document.getElementById('weight-tons').textContent = formatTons(data.total_weight_stats);
 
         const evacPeopleWrapper = document.getElementById('evac-people-wrapper');
-        if (!data.evac_people || data.evac_people === 0) {
+        if (!data.evac_people_stats || data.evac_people_stats === 0) {
             evacPeopleWrapper.style.display = 'none';
         } else {
             evacPeopleWrapper.style.display = 'flex';
-            document.getElementById('evac-people').textContent = formatNumber(data.evac_people);
+            document.getElementById('evac-people').textContent = formatNumber(data.evac_people_stats);
 
             const evac300Wrapper = document.getElementById('evac-300-wrapper');
-            if (!data.evac_300 || data.evac_300 === 0) {
+            if (!data.evac_300_stats || data.evac_300_stats === 0) {
                 evac300Wrapper.style.display = 'none';
             } else {
                 evac300Wrapper.style.display = 'block';
-                document.getElementById('evac-300').textContent = formatNumber(data.evac_300);
+                document.getElementById('evac-300').textContent = formatNumber(data.evac_300_stats);
             }
 
             const evac200Wrapper = document.getElementById('evac-200-wrapper');
-            if (!data.evac_200 || data.evac_200 === 0) {
+            if (!data.evac_200_stats || data.evac_200_stats === 0) {
                 evac200Wrapper.style.display = 'none';
             } else {
                 evac200Wrapper.style.display = 'block';
-                document.getElementById('evac-200').textContent = formatNumber(data.evac_200);
+                document.getElementById('evac-200').textContent = formatNumber(data.evac_200_stats);
             }
         }
 
         const evacNrkWrapper = document.getElementById('evac-nrk-wrapper');
-        if (!data.evac_nrk || data.evac_nrk === 0) {
+        if (!data.evac_nrk_stats || data.evac_nrk_stats === 0) {
             evacNrkWrapper.style.display = 'none';
         } else {
             evacNrkWrapper.style.display = 'flex';
-            document.getElementById('evac-nrk').textContent = formatNumber(data.evac_nrk);
+            document.getElementById('evac-nrk').textContent = formatNumber(data.evac_nrk_stats);
         }
 
         const strikeWrapper = document.getElementById('strike-wrapper');
-        document.getElementById('strike-ops').textContent = formatNumber(data.strike_ops || 0);
-        if (!data.strike_ops || data.strike_ops === 0) {
+        document.getElementById('strike-ops').textContent = formatNumber(data.strike_ops_stats || 0);
+        if (!data.strike_op_stats || data.strike_ops_stats === 0) {
             strikeWrapper.style.visibility = 'hidden'; 
         } else {
             strikeWrapper.style.visibility = 'visible'; 
         }
 
         const engineerWrapper = document.getElementById('engineer-wrapper');
-        if (!data.engineer_ops || data.engineer_ops === 0) {
+        if (!data.engineer_ops_stats || data.engineer_ops_stats === 0) {
             engineerWrapper.style.display = 'none';
         } else {
             engineerWrapper.style.display = 'flex';
-            document.getElementById('engineer-ops').textContent = formatNumber(data.engineer_ops);
+            document.getElementById('engineer-ops').textContent = formatNumber(data.engineer_ops_stats);
         }
 
         const destroyedWrapper = document.getElementById('destroyed-wrapper');
-        const destroyedVal = (data.destroyed_uav !== undefined && data.destroyed_uav !== null) ? data.destroyed_uav : 332;
+        const destroyedVal = (data.destroyed_uav !== undefined && data.destroyed_uav !== null) ? data.destroyed_uav_stats : 332;
         if (!destroyedVal || destroyedVal === 0) {
             destroyedWrapper.style.display = 'none';
         } else {
@@ -364,7 +364,7 @@
         }
 
         const reconWrapper = document.getElementById('recon-wrapper');
-        const reconVal = (data.recon_ops !== undefined && data.recon_ops !== null) ? data.recon_ops : 37;
+        const reconVal = (data.recon_ops !== undefined && data.recon_ops !== null) ? data.recon_ops_stats : 37;
         if (!reconVal || reconVal === 0) {
             reconWrapper.style.display = 'none';
         } else {
