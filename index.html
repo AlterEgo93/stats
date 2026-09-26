@@ -227,7 +227,7 @@
     <div class="infographic">
         <div class="text title">
             Результати бойової роботи ББНК «Alter Ego» (93 ОМБр)<br>
-            за <span id="report-month"></span>
+            <span id="report-month"></span>
         </div>
 
         <div class="text missions">
@@ -309,7 +309,7 @@
         let month = now.getMonth();
         let year = now.getFullYear();
         if(now.getDate() <= 5){ month--; if(month < 0){ month = 11; year--; } }
-        return `${months[month]} ${year} року`;
+        return `2025—${year}`;
     }
 
     function formatTons(kg){
