@@ -104,45 +104,45 @@
         background-color: #d0d0d0; /* Колір сірих ліній */
     }
 
-    /* НИЖНІЙ БЛОК (6 колонок в один ряд) */
-    .bottom-stats {
-        position: absolute;
-        top: 71%;
-        left: 2%;
-        width: 96%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 5px;
-    }
-
+    /* КОЖЕН БЛОК ОКРЕМО ДЛЯ РУЧНОГО РУХУ */
     .stat-item {
-        flex: 1;
+        position: absolute;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
-        padding-left: 65px; /* Місце під іконку з background.png */
-        position: relative;
+        width: 14%; /* ширина блоку */
     }
+
+    /* РУХАЙТЕ БЛОКИ ТУТ (змінюйте відсотки left) */
+    .pos-1 { left: 3.5%; top: 71%; width: 16%; }
+    .pos-2 { left: 20%;  top: 71%; }
+    .pos-3 { left: 36%;  top: 71%; }
+    .pos-4 { left: 51%;  top: 71%; }
+    .pos-5 { left: 67%;  top: 71%; }
+    .pos-6 { left: 83%;  top: 71%; }
 
     .stat-top {
         display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 6px;
+        /* Якщо хочете текст ПІД цифрою, залишайте column. 
+           Якщо збоку (як на картинці) - змініть на row */
+        flex-direction: column; 
+        align-items: flex-start;
+        padding-left: 55px; /* Місце зліва ТІЛЬКИ для іконки */
+        margin-bottom: 8px;
     }
 
     .mini-number { 
-        font-size: 46px; 
+        font-size: 58px; /* Збільшена цифра */
         font-weight: 800; 
-        line-height: 1;
+        line-height: 0.9;
     }
     
     .mini-label { 
-        font-size: 14px; 
+        font-size: 16px; 
         font-weight: 700; 
         line-height: 1.15;
+        margin-top: 4px;
     }
 
     .mini-desc {
@@ -150,6 +150,7 @@
         font-weight: 600;
         line-height: 1.3;
         color: #010101;
+        padding-left: 5px; /* Текст опису починається лівіше від цифри */
     }
 
     .mini-desc div {
@@ -218,57 +219,60 @@
         <!-- Центральний заголовок нижньої секції -->
         <div class="text center-title">Евакуація та спеціальні операції</div>
 
-        <!-- Контейнер для нижніх 6 блоків -->
-        <div class="bottom-stats">
-            <div class="stat-item" id="evac-people-wrapper">
-                <div class="stat-top">
-                    <span class="mini-number" id="evac-people"></span>
-                    <span class="mini-label">евакуацій<br>особового<br>складу</span>
-                </div>
-                <div class="mini-desc">
-                    <div id="evac-300-wrapper"><span style="color:#2b5e91; font-size:14px; margin-right:4px;">🧑‍🦽</span><span id="evac-300"></span> поранених (300)</div>
-                    <div id="evac-200-wrapper"><span style="color:#2b5e91; font-size:14px; margin-right:4px;">⏳</span><span id="evac-200"></span> загиблих (200)</div>
-                </div>
+        <!-- БЛОК 1 -->
+        <div class="stat-item pos-1" id="evac-people-wrapper">
+            <div class="stat-top">
+                <span class="mini-number" id="evac-people"></span>
+                <span class="mini-label">евакуацій<br>особового складу</span>
             </div>
+            <div class="mini-desc">
+                <div id="evac-300-wrapper"><span style="color:#2b5e91; font-size:14px; margin-right:4px;">🧑‍🦽</span><span id="evac-300"></span> поранених (300)</div>
+                <div id="evac-200-wrapper"><span style="color:#2b5e91; font-size:14px; margin-right:4px;">⏳</span><span id="evac-200"></span> загиблих (200)</div>
+            </div>
+        </div>
 
-            <div class="stat-item" id="evac-nrk-wrapper">
-                <div class="stat-top">
-                    <span class="mini-number" id="evac-nrk"></span>
-                    <span class="mini-label">евакуацій<br>НРК</span>
-                </div>
-                <div class="mini-desc">Кількість операцій з порятунку<br>та вивезення пошкоджених<br>наземних комплексів</div>
+        <!-- БЛОК 2 -->
+        <div class="stat-item pos-2" id="evac-nrk-wrapper">
+            <div class="stat-top">
+                <span class="mini-number" id="evac-nrk"></span>
+                <span class="mini-label">евакуацій<br>НРК</span>
             </div>
+            <div class="mini-desc">Кількість операцій з порятунку<br>та вивезення пошкоджених<br>наземних комплексів</div>
+        </div>
 
-            <div class="stat-item" id="strike-wrapper">
-                <div class="stat-top">
-                    <span class="mini-number" id="strike-ops"></span>
-                    <span class="mini-label">ударних<br>місій</span>
-                </div>
+        <!-- БЛОК 3 -->
+        <div class="stat-item pos-3" id="strike-wrapper">
+            <div class="stat-top">
+                <span class="mini-number" id="strike-ops"></span>
+                <span class="mini-label">ударних<br>місій</span>
             </div>
+        </div>
 
-            <div class="stat-item" id="engineer-wrapper">
-                <div class="stat-top">
-                    <span class="mini-number" id="engineer-ops"></span>
-                    <span class="mini-label">інженерних<br>місій</span>
-                </div>
-                <div class="mini-desc">Окрім логістики, підрозділ<br>виконав спеціалізовані<br>інженерні завдання</div>
+        <!-- БЛОК 4 -->
+        <div class="stat-item pos-4" id="engineer-wrapper">
+            <div class="stat-top">
+                <span class="mini-number" id="engineer-ops"></span>
+                <span class="mini-label">інженерних<br>місій</span>
             </div>
+            <div class="mini-desc">Окрім логістики, підрозділ<br>виконав спеціалізовані<br>інженерні завдання</div>
+        </div>
 
-            <div class="stat-item" id="recon-wrapper">
-                <div class="stat-top">
-                    <span class="mini-number" id="recon-ops"></span>
-                    <span class="mini-label">розвідувальних<br>місій</span>
-                </div>
-                <div class="mini-desc">Кількість польотів та<br>наземних виїздів з метою<br>збору розвідданих</div>
+        <!-- БЛОК 5 -->
+        <div class="stat-item pos-5" id="recon-wrapper">
+            <div class="stat-top">
+                <span class="mini-number" id="recon-ops"></span>
+                <span class="mini-label">розвідувальних<br>місій</span>
             </div>
+            <div class="mini-desc">Кількість польотів та<br>наземних виїздів з метою<br>збору розвідданих</div>
+        </div>
 
-            <div class="stat-item" id="destroyed-wrapper">
-                <div class="stat-top">
-                    <span class="mini-number" id="destroyed-ops"></span>
-                    <span class="mini-label">контр-БПЛА<br>завдань</span>
-                </div>
-                <div class="mini-desc">Виявлення та нейтралізація<br>ворожих безпілотних<br>апаратів</div>
+        <!-- БЛОК 6 -->
+        <div class="stat-item pos-6" id="destroyed-wrapper">
+            <div class="stat-top">
+                <span class="mini-number" id="destroyed-ops"></span>
+                <span class="mini-label">контр-БПЛА<br>завдань</span>
             </div>
+            <div class="mini-desc">Виявлення та нейтралізація<br>ворожих безпілотних<br>апаратів</div>
         </div>
         
     </div>
