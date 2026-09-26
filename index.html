@@ -74,7 +74,7 @@
     .years{ color: #3d73ab !important; -webkit-text-fill-color: #3d73ab !important;}
 
     /* ГОЛОВНІ БЛОКИ */
-    .big-number{ font-size: 88px; font-weight:800; }
+    .big-number{ font-size: 72px; font-weight:800; }
     .big-label{ font-size: 28px; font-weight:700; }
     .small-label{ font-size: 14px; font-weight:500; line-height:1.25; }
 
@@ -128,7 +128,7 @@
            Якщо збоку (як на картинці) - змініть на row */
         flex-direction: column; 
         align-items: flex-start;
-        padding-left: 115px; /* Місце зліва ТІЛЬКИ для іконки */
+        padding-left: 120px; /* Місце зліва ТІЛЬКИ для іконки */
         margin-bottom: 8px;
     }
 
@@ -340,7 +340,7 @@
 
         const strikeWrapper = document.getElementById('strike-wrapper');
         document.getElementById('strike-ops').textContent = formatNumber(data.strike_ops_stats || 0);
-        if (!data.strike_op_stats || data.strike_ops_stats === 0) {
+        if (!data.strike_ops_stats || data.strike_ops_stats === 0) {
             strikeWrapper.style.visibility = 'hidden'; 
         } else {
             strikeWrapper.style.visibility = 'visible'; 
